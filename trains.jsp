@@ -475,6 +475,7 @@
 					type="hidden" id="transit_line_name" name="transit_line_name">
 				<input type="hidden" id="arrival_time" name="arrival_time">
 				<input type="hidden" id="dest_time" name="dest_time">
+				<input type = "hidden" id="final_dest_arrival" name = "final_dest_arrival">
 				<input
 					type="hidden" id="trip_type" name="trip_type" value="<%=request.getParameter("type")%>">
 				 <input
@@ -488,7 +489,7 @@
 				<script>
 					function updateReserve1(class_type, discount) {
 						//document.getElementById("demo").innerHTML = 34343;
-						var row, table, train_id, transit_line_name, arrive_time, dest_time, origin, dest, fare, disc, class_t;
+						var row, table, train_id, transit_line_name, arrive_time, dest_time,final_dest_arrival, origin, dest, fare, disc, class_t;
 						var ele = document.getElementsByName('checkBox');
 						for (var i = 0; i < ele.length; i++) {
 							if (ele[i].checked)
@@ -502,6 +503,7 @@
 						transit_line_name = table.rows[row].cells[2].innerHTML;
 						arrive_time = table.rows[row].cells[5].innerHTML;
 						dest_time = table.rows[row].cells[6].innerHTML;
+						final_dest_arrival = table.rows[row].cells[7].innerHTML;
 						fare = (Number(table.rows[row].cells[10].innerHTML) + class_t);
 						fare = Math.round((fare * disc) * 100) / 100;
 						//document.getElementById("demo").innerHTML = fare;
@@ -515,6 +517,8 @@
 						arrivalTime.value = arrive_time;
 						var destTime = document.getElementById("dest_time")
 						destTime.value = dest_time;
+						var final_arrival = document.getElementById("final_dest_arrival");
+						final_arrival.value = final_dest_arrival;
 						var fareAmount = document.getElementById("fare")
 						fareAmount.value = fare;
 					}
@@ -526,6 +530,13 @@
 				</script>
 			</div>
 			</form>
+		</div>
+		<div>
+		<% if(null!=request.getAttribute("errorMessage"))
+    {
+        out.println(request.getAttribute("errorMessage"));
+    }
+		%>
 		</div>
 </body>
 </html>

@@ -24,14 +24,46 @@
 			String dest_id = request.getParameter("dest_id");
 			String arrivalTime = request.getParameter("arrival_time");
 			String destTime = request.getParameter("dest_time");
+			String dest_arrival_time = request.getParameter("final_dest_arrival");
 			String trip_type = request.getParameter("trip_type");
 			String class_type = request.getParameter("class_type");
 			String fareAmount = request.getParameter("fare");
 			String origin_name = request.getParameter("origin_name");
 			String dest_name = request.getParameter("dest_name");
+			
+			boolean NO_SEAT_AVAILABLE =false;
+			
 		try {
 			ApplicationDB db = new ApplicationDB();
 			Connection con = db.getConnection();
+			
+			
+			PreparedStatement checkAvailable =con.prepareStatement(
+					"select available_seats from Train_Schedule where trainId = ? and station_arrival_time between ? and ?");
+			checkAvailable.setInt(1,Integer.parseInt(train_id));
+			checkAvailable.setString(2,arrivalTime);
+			checkAvailable.setString(3,dest_arrival_time);
+			ResultSet checkAvailable_result = checkAvailable.executeQuery();
+			
+			while(checkAvailable_result.next()){
+				if(Integer.parseInt(checkAvailable_result.getString(1)) <= 0){
+					NO_SEAT_AVAILABLE = true;
+				}
+			}
+			
+			if(NO_SEAT_AVAILABLE){
+				response.sendRedirect("WebContent\trains.jsp");
+				return;
+			}
+			
+			
+			PreparedStatement updateTickets = con.prepareStatement(
+			"update Train_Schedule t set available_seats = available_seats - 1 where trainId = ?  and station_arrival_time between ? and ?;");
+			updateTickets.setInt(1,Integer.parseInt(train_id));
+			updateTickets.setString(2,arrivalTime);
+			updateTickets.setString(3,dest_arrival_time);
+			updateTickets.executeUpdate();
+
 			PreparedStatement stmt = con.prepareStatement(
 					"INSERT INTO Reservation( username, res_date, trainId, transit_line_name, origin_datetime, dest_datetime, origin_stationId, destination_stationID, classname, total_fare, trip_type) VALUES (?, ?, ?,?, ?, ?, ?, ?, ?, ?, ?)");
 			stmt.setString(1, username);
@@ -51,6 +83,7 @@
 			stmt.setDouble(10, Double.parseDouble(fareAmount));
 			stmt.setString(11, trip_type);
 			stmt.executeUpdate();
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.println("Error " + e.getMessage());
