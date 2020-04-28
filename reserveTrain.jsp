@@ -92,7 +92,7 @@
 				stmt.setInt(3, Integer.parseInt(train_id));
 				stmt.setString(4, transit_line_name);
 				stmt.setString(5, arrivalTime);
-				stmt.setString(6, destTime);
+				stmt.setString(6, dest_arrival_time);
 				stmt.setInt(7, Integer.parseInt(origin_id));
 				stmt.setInt(8, Integer.parseInt(dest_id));
 				stmt.setString(9, class_type);

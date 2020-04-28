@@ -37,7 +37,7 @@
 			<th>Train ID</th>
 			<th>Transit Line Name</th>
 			<th>Origin Station Arrival</th>
-			<th>Origin Station Departure</th>
+			<th>Destination Station Arrival</th>
 			<th>Origin Station ID</th>
 			<th>Destination Station ID</th>
 			<th>Fare</th>
@@ -79,6 +79,7 @@
 			setResId.value = res_id;
 			var setIndex = document.getElementById("index");
 			setIndex.value = i;
+		
 		}
 	</script>
 		<input type="hidden" id="username" name="username"
