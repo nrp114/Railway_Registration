@@ -68,7 +68,7 @@
 				count++;
 			}
 		%>
-
+		
 	</table>
 	<script>
 		function deleteRow(r) {
@@ -82,7 +82,7 @@
 		}
 	</script>
 		<input type="hidden" id="username" name="username"
-			value="<%=username%>">
+			value="<%=username%>"> 
 		<input type="hidden" id="password"
 			name="password" value="<%=request.getParameter("password")%>">
 		<input type="hidden" id="res_id" name="res_id">
@@ -91,13 +91,13 @@
 		<script>
 		function selectRadio() {
 			//document.getElementById()
-			document.getElementById("cancel_box").required = true;
+			document.getElementById("cancel_box").required = true;	
 		}
 		</script>
 	</form>
 	<form method="post" action="welcome.jsp">
 		<input type="hidden" id="username" name="username"
-			value="<%=username%>">
+			value="<%=username%>"> 
 		<input type="hidden" id="password"
 			name="password" value="<%=request.getParameter("password")%>">
 		<input type="hidden" id="opt" name="click" value="<%= "Sign In" %>">

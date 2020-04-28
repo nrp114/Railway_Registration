@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Reserve Ticket</title>
+<title>Ticket Reservation</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet"
@@ -83,26 +83,26 @@
 						out.println("Error " + e.getMessage());
 					}
 				%>
-			</select>
-			<br> <br>
-			<label for="datepicker">Travel date:</label>
-			<input type="text" name="selDate" id="datepicker" required>
+			</select> 
+			<br> <br> 
+			<label for="datepicker">Travel date:</label> 
+			<input type="text" name="selDate" id="datepicker" required> 
 			<br>
-			<br>
+			<br> 
 			<label for="discount">Are you a children (below
 				18), a senior (65 or above) or disabled? (Select yes if one or more
-				apply to get 5% discount)</label>
+				apply to get 5% discount)</label> 
 			<br> Yes <input type="radio"
 				name="discount" id="discount1" value="yes"> No <input
 				type="radio" name="discount" id="discount1" value="no"> <br>
-			<br>
+			<br> 
 			<label for="ticketType"> Select the type of ticket
 				you want: </label> <br> One-Way <input type="radio" name="type"
 				id="type" value="one_way"> Round Trip <input type="radio"
 				name="type" id="type" value="two_way"> Weekly Pass <input
 				type="radio" name="type" id="type" value="weekly"> Monthly
 			Pass <input type="radio" name="type" id="type" value="monthly">
-			<br> <br>
+			<br> <br> 
 			<label for="class"> Select travel class:
 			</label> <br> Economy (Fare) <input type="radio" name="class_type"
 				id="class" value="economy"> Business (Fare + $10) <input
@@ -113,7 +113,7 @@
 				<input type="hidden" id="username" name="username"
 					value="<%=request.getParameter("username")%>"> <input
 					type="hidden" id="password" name="password"
-					value="<%=request.getParameter("password")%>">
+					value="<%=request.getParameter("password")%>"> 
 				<input type="hidden" id="opt" name="click" value="<%= "Sign In" %>">
 					<input type="submit" value="Search" onclick="selectRadio()">
 			</div>
@@ -121,7 +121,7 @@
 	</form>
 	<form method="post" action="welcome.jsp">
 		<input type="hidden" id="username" name="username"
-			value="<%=request.getParameter("username")%>">
+			value="<%=request.getParameter("username")%>"> 
 		<input type="hidden" id="password"
 			name="password" value="<%=request.getParameter("password")%>">
 		<input type="hidden" id="opt" name="click" value="<%= "Sign In" %>">

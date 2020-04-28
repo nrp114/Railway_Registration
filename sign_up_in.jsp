@@ -58,7 +58,7 @@ div {
 </head>
 <%
 	String opt = request.getParameter("command");
-	try{
+	try{ 
 		if(opt.equals("signup")){ %>
 <body>
 <h3>Welcome to the Sign Up Page</h3>
@@ -70,31 +70,31 @@ div {
 
     <label for="lname">Last Name</label>
     <input type="text" id="lname" name="lastname" placeholder="Your last name.." required>
-
+    
     <label for="telephone">Telephone</label>
     <input type="text" id="telephone" name="telephone" placeholder="XXX-XXX-XXXX" required>
-
+    
     <label for="address">Address</label>
     <input type="text" id="address" name="address" placeholder="Your address">
-
+    
     <label for="city">City</label>
     <input type="text" id="city" name="city" placeholder="City">
-
+    
     <label for="state">State</label>
     <input type="text" id="state" name="state" placeholder="State">
-
+    
     <label for="zipcode">Zip Code</label>
     <input type="text" id="zipcode" name="zipcode">
-
+    
     <label for="email">Email</label>
     <input type="text" id="email" name="email" placeholder="xyz@gmail.com">
-
+    
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
-
+    
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
-
+      
     <input type="submit" name="click" value="Sign Up">
   </form>
 </div>
@@ -104,18 +104,18 @@ div {
 <h3>Please Log In</h3>
 
 <div>
-  <form method = "post" action="welcome.jsp">
+  <form method = "post" action="welcome.jsp">    
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
-
+    
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
-
+      
     <input type="submit" name="click" value="Sign In">
   </form>
 </div>
 </body>
 <% } }catch(Exception e){
-	out.print(e.toString());
+	out.print(e.toString());	
 }%>
 </html>

@@ -14,19 +14,19 @@
     </script>
 </head>
 <body>
-<%
-try{
-		ApplicationDB db = new ApplicationDB();
-		Connection con = db.getConnection();
+<% 
+try{	
+		ApplicationDB db = new ApplicationDB();	
+		Connection con = db.getConnection();		
 		boolean isUser = false;
 		Statement stmt = con.createStatement();
 		//Get the selected radio button from the index.jsp
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		
 		String str = "SELECT * FROM Customers WHERE username = '"+ username +"' AND password = '"+ password +"'" ;
 		ResultSet result = stmt.executeQuery(str);
-
+		
 		while(result.next()){
 			out.print("<p>");
 			isUser = true;

@@ -104,21 +104,21 @@ hr {
 	<%
 //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 String opt = request.getParameter("click");
-if(opt.equals("Sign In")){
+if(opt.equals("Sign In")){ 
 String username = null;
 String password = null;
 boolean isUser = false;
-try{
-		ApplicationDB db = new ApplicationDB();
-		Connection con = db.getConnection();
+try{	
+		ApplicationDB db = new ApplicationDB();	
+		Connection con = db.getConnection();		
 		Statement stmt = con.createStatement();
 		//Get the selected radio button from the index.jsp
 		username = request.getParameter("username");
 		password = request.getParameter("password");
-
+		
 		String str = "SELECT * FROM Customer WHERE username = '"+ username +"' AND password = '"+ password +"'" ;
 		ResultSet result = stmt.executeQuery(str);
-
+		
 		while(result.next()){
 			out.print("<p>");
 			isUser = true;
@@ -160,7 +160,7 @@ try{
 			</form>
 		</div>
 	</div>
-	<%
+	<% 
 		}
 		if(isUser == false){
 			out.print("Please enter valid username and password");
@@ -174,8 +174,8 @@ catch (Exception e) {
 }else{
 	boolean check = true;
 	try{
-		ApplicationDB db = new ApplicationDB();
-		Connection con = db.getConnection();
+		ApplicationDB db = new ApplicationDB();	
+		Connection con = db.getConnection();		
 		boolean isUser = false;
 		int zip_code = 0;
 		//Create a SQL statement
@@ -193,14 +193,14 @@ catch (Exception e) {
 		String email = request.getParameter("email");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		
 		String str = "SELECT * FROM Customer WHERE username = '"+ username +"'";
 		ResultSet result = stmt.executeQuery(str);
 		if(result.next()){
 			out.print("Sorry, username is already taken!!! ");
 			throw new Exception();
 		}
-
+		
 		String insert = "INSERT INTO Customer(firstName, lastName, telephone, address, city, state, zipcode, email, username, password)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(insert);
