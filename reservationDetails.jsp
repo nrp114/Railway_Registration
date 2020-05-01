@@ -28,6 +28,7 @@
 	%>
 	<p>All your reservation are stated below ...!!</p>
 	<br>
+	<br>
 	<form method="post" action="cancelReservation.jsp">
 	<table BORDER="1" id="table">
 		<tr>
@@ -70,6 +71,8 @@
 		%>
 		
 	</table>
+	<br>
+	<br>
 	<script>
 		function deleteRow(r) {
 			var i = r.parentNode.parentNode.rowIndex;
@@ -96,6 +99,8 @@
 		}
 		</script>
 	</form>
+	<br>
+	<br>
 	<form method="post" action="welcome.jsp">
 		<input type="hidden" id="username" name="username"
 			value="<%=username%>"> 

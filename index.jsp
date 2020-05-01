@@ -46,10 +46,10 @@ div {
   	<h3>For Admin</h3>
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
-
+    
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
-
+      
     <input type="submit" name="click" value="Sign In">
   </form>
 </div>
@@ -60,10 +60,10 @@ div {
   	<h3>For Customer Representative/Employees</h3>
     <label for="username">Username</label>
     <input type="text" id="username" name="username" required>
-
+    
     <label for="password">Password</label>
     <input type="password" id="password" name="password" required>
-
+      
     <input type="submit" name="click" value="Sign In">
   </form>
 </div>

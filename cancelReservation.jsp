@@ -33,8 +33,8 @@
 			PreparedStatement updateTickets = con.prepareStatement(
 					"update Train_Schedule t set available_seats = available_seats + 1 where trainId = ?  and station_arrival_time between ? and ?;");
 					updateTickets.setInt(1,trainId);
-					updateTickets.setString(2,origin_datetime);
-					updateTickets.setString(3,dest_datetime);
+					updateTickets.setString(2, origin_datetime);
+					updateTickets.setString(3, dest_datetime);
 					updateTickets.executeUpdate();
 			
 			PreparedStatement stmt = con.prepareStatement("DELETE FROM Reservation WHERE res_id = ?");
