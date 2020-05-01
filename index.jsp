@@ -29,6 +29,7 @@ div {
 
 <div>
   <form method = "get" action="sign_up_in.jsp">
+  <h3>For Customers</h3>
     New User? Sign Up <input type="radio" name="command" value="signup"/>
 	<br>
 	<br>
@@ -36,6 +37,34 @@ div {
 	<br>
 	<br>
     <input type="submit" value="Submit">
+  </form>
+</div>
+<br>
+<br>
+<div>
+  <form method = "get" action="adminlogin.jsp">
+  	<h3>For Admin</h3>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" name="click" value="Sign In">
+  </form>
+</div>
+<br>
+<br>
+<div>
+  <form method = "get" action="UI2.jsp">
+  	<h3>For Customer Representative/Employees</h3>
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" required>
+
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required>
+
+    <input type="submit" name="click" value="Sign In">
   </form>
 </div>
 </body>
