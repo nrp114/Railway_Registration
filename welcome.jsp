@@ -52,7 +52,15 @@ button[type=submit] {
 
 .middleleft {
 	position: absolute;
-	top: 65%;
+	top: 35%;
+	left: 5%;
+	bottom: 0;
+	left: 16px;
+}
+
+.middleleftPlus {
+	position: absolute;
+	top: 25%;
 	left: 5%;
 	bottom: 0;
 	left: 16px;
@@ -60,10 +68,10 @@ button[type=submit] {
 
 .middleright {
 	position: absolute;
-	top: 65%;
-	right: 5%;
+	top: 45%;
+	left: 5%;
 	bottom: 0;
-	right: 16px;
+	left: 16px;
 }
 
 .bottomright {
@@ -104,21 +112,21 @@ hr {
 	<%
 //response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 String opt = request.getParameter("click");
-if(opt.equals("Sign In")){ 
+if(opt.equals("Sign In")){
 String username = null;
 String password = null;
 boolean isUser = false;
-try{	
-		ApplicationDB db = new ApplicationDB();	
-		Connection con = db.getConnection();		
+try{
+		ApplicationDB db = new ApplicationDB();
+		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		//Get the selected radio button from the index.jsp
 		username = request.getParameter("username");
 		password = request.getParameter("password");
-		
+
 		String str = "SELECT * FROM Customer WHERE username = '"+ username +"' AND password = '"+ password +"'" ;
 		ResultSet result = stmt.executeQuery(str);
-		
+
 		while(result.next()){
 			out.print("<p>");
 			isUser = true;
@@ -133,6 +141,15 @@ try{
 				<% out.print(result.getString("firstName")); %>!!!
 			</h2>
 			<hr>
+		</div>
+		<div class="middleleftPlus">
+			<form method="post" action="msg.jsp">
+				<input type="hidden" id="username" name="username"
+					value="<%= request.getParameter("username")%>"> <input
+					type="hidden" id="password" name="password" value="<%= password %>">
+				<input type="hidden" id="opt" name="opt" value="<%= "Sign In" %>">
+				<button type="submit">Help/Contact</button>
+			</form>
 		</div>
 		<div class="middleleft">
 			<form method="post" action="reserve.jsp">
@@ -160,10 +177,15 @@ try{
 			</form>
 		</div>
 	</div>
-	<% 
+	<%
 		}
 		if(isUser == false){
 			out.print("Please enter valid username and password");
+			%>
+			<form method="post" action="index.jsp">
+				<input type="submit" value="Go Back">
+			</form>
+			<%
 		}
 		db.closeConnection(con);
 		//response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
@@ -174,8 +196,8 @@ catch (Exception e) {
 }else{
 	boolean check = true;
 	try{
-		ApplicationDB db = new ApplicationDB();	
-		Connection con = db.getConnection();		
+		ApplicationDB db = new ApplicationDB();
+		Connection con = db.getConnection();
 		boolean isUser = false;
 		int zip_code = 0;
 		//Create a SQL statement
@@ -193,14 +215,14 @@ catch (Exception e) {
 		String email = request.getParameter("email");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		String str = "SELECT * FROM Customer WHERE username = '"+ username +"'";
 		ResultSet result = stmt.executeQuery(str);
 		if(result.next()){
 			out.print("Sorry, username is already taken!!! ");
 			throw new Exception();
 		}
-		
+
 		String insert = "INSERT INTO Customer(firstName, lastName, telephone, address, city, state, zipcode, email, username, password)"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(insert);
@@ -229,6 +251,15 @@ catch (Exception e) {
 				<% out.print(firstName); %>!!!
 			</h2>
 			<hr>
+		</div>
+		<div class="middleleftPlus">
+			<form method="post" action="msg.jsp">
+				<input type="hidden" id="username" name="username"
+					value="<%= request.getParameter("username")%>"> <input
+					type="hidden" id="password" name="password" value="<%= password %>">
+				<input type="hidden" id="opt" name="opt" value="<%= "Sign In" %>">
+				<button type="submit">Help/Contact</button>
+			</form>
 		</div>
 		<div class="middleleft">
 			<form method="post" action="reserve.jsp">
