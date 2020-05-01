@@ -407,7 +407,7 @@
 						<th>Destination Station Arrival</th>
 						<th>Stops</th>
 						<th>Trip Type</th>
-						<th>Fare</th>
+						<th>Fare + Class_Type_Cost*</th>
 						<th>Reserve</th>
 					</tr>
 					<%
@@ -424,8 +424,7 @@
 						<td><%=dest_arrival_time.get(count_available).toString()%></td>
 						<td><%=listStops.get(count_available).toString()%></td>
 						<td><%=request.getParameter("type")%></td>
-						<td><%=GetFare(count_available, type, one_way_fare, two_way_fare, weekly_fare, monthly_fare, number_of_stops,
-		listStops)%></td>
+						<td><%=GetFare(count_available, type, one_way_fare, two_way_fare, weekly_fare, monthly_fare, number_of_stops, listStops)%></td>
 						<td>
 							<%
 								if (discount.equals("no")) {
@@ -531,6 +530,11 @@
 			</div>
 			</form>
 		</div>
+		<br>
+		<br>
+		<footer>
+			<p>*Class Type Cost: This is the class type cost for the train. The class type cost is not included in the fare given in the above table. It will be added later. (Economy = Fare; Business: Fare + $10; First Class: Fare + $15)</p>
+		</footer>
 		<div>
 		<% if(null!=request.getAttribute("errorMessage"))
     {
