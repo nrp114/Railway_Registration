@@ -7,6 +7,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+   margin: 20px 2px;
+}
+th{
+	background-color: #D9D9D9;
+}
+th, td {
+  padding: 15px;
+}
+button {
+  background-color: white;
+  color: black;
+  border: 2px solid #555555;
+}
+
+button:hover {
+  background-color: #555555;
+  color: white;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>List of Trains</title>
 <script type="text/javascript">
@@ -185,25 +208,25 @@
 			<div>
 
 				<p>Click the button to sort the table :</p>
-				<p>
+				<div class = "spbutton">
+				
 					<button onclick="sortOriginArrival()">Sort by arrival time</button>
-				</p>
-				<p>
+				
+				
 					<button onclick="sortOriginDeparture()">Sort by departure
 						time</button>
-				</p>
-				<p>
+				
+				
 					<button onclick="sortDestinationArrival()">Sort by destination arrival time</button>
-				</p>
-				<p>
+				
+				
 					<button onclick="sortFare()">Sort by Fare</button>
-				</p>
-				<p>
+				
 					<button onclick="sortOrigin()">Sort by Origin</button>
-				</p>
-				<p>
+				
 					<button onclick="sortDestination()">Sort by Destination</button>
-				</p>
+				
+				</div>
 			</div>
 			<form method="post" action="reserveTrain.jsp">
 			<div>

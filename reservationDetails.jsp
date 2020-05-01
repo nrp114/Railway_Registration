@@ -6,6 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th{
+	background-color: #D9D9D9;
+}
+th, td {
+  padding: 15px;
+}
+</style>
 <meta charset="ISO-8859-1">
 <title>Reservations</title>
 <script type="text/javascript">
@@ -30,7 +42,7 @@
 	<br>
 	<br>
 	<form method="post" action="cancelReservation.jsp">
-	<table BORDER="1" id="table">
+	<table BORDER="1" id="table" style="width:100%">
 		<tr>
 			<th>Reservation ID</th>
 			<th>User name</th>
