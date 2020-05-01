@@ -51,14 +51,32 @@ th, td {
 			<th>Transit Line Name</th>
 			<th>Origin Station Arrival</th>
 			<th>Destination Station Arrival</th>
-			<th>Origin Station ID</th>
-			<th>Destination Station ID</th>
+			<th>Origin Station</th>
+			<th>Destination Station</th>
 			<th>Fare</th>
 			<th>Trip Type</th>
 			<th>Cancel</th>
 		</tr>
 		<%
+			String originStation = null;
+			String destinationStation = null;
 			while (information.next()) {
+				try{
+					PreparedStatement stmt1 = con.prepareStatement("select stationName from Station where stationId = ?");
+					stmt1.setString(1, information.getString(8));
+					ResultSet getOriginStation = stmt1.executeQuery();
+					while(getOriginStation.next()){
+						originStation = getOriginStation.getString(1);
+					}
+					stmt1.setString(1, information.getString(9));
+					ResultSet getDestinationStation = stmt1.executeQuery();
+					while(getDestinationStation.next()){
+						destinationStation = getDestinationStation.getString(1);
+					}	
+				}catch (Exception e) {
+					e.printStackTrace();
+					out.println("Error " + e.getMessage());
+				}
 		%>
 		<tr>
 			<td><%=information.getString(1)%></td>
@@ -68,8 +86,8 @@ th, td {
 			<td><%=information.getString(5)%></td>
 			<td><%=information.getString(6)%></td>
 			<td><%=information.getString(7)%></td>
-			<td><%=information.getString(8)%></td>
-			<td><%=information.getString(9)%></td>
+			<td><%=originStation%></td>
+			<td><%=destinationStation%></td>
 			<td><%=information.getString(10)%></td>
 			<td><%=information.getString(11)%></td>
 			<td><input type="radio" name="cancelBox" id="cancel_box"
@@ -81,7 +99,6 @@ th, td {
 				count++;
 			}
 		%>
-		
 	</table>
 	<br>
 	<br>
@@ -102,6 +119,7 @@ th, td {
 		<input type="hidden" id="password"
 			name="password" value="<%=request.getParameter("password")%>">
 		<input type="hidden" id="res_id" name="res_id">
+		<input type="hidden" id="opt" name="click" value="<%= "Sign In" %>">
 		<input type="hidden" id="index" name="index">
 		<button type="submit" onclick="selectRadio()">Cancel</button>
 		<script>
