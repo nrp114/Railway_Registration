@@ -66,13 +66,6 @@
 	<%
 		} else {
 			try{
-				Statement getMaxResId = con.createStatement();
-				String query = "select max(res_id) from Reservation";
-				ResultSet getMax = getMaxResId.executeQuery(query);
-				while(getMax.next()){
-					res_id = getMax.getString(1);
-				}
-				res_id = "" + (Integer.parseInt(res_id) + 1);
 				PreparedStatement updateTickets = con.prepareStatement(
 						"update Train_Schedule t set available_seats = available_seats - 1 where trainId = ?  and station_arrival_time between ? and ?;");
 				updateTickets.setInt(1, Integer.parseInt(train_id));
@@ -99,6 +92,13 @@
 				stmt.setDouble(10, Double.parseDouble(fareAmount));
 				stmt.setString(11, trip_type);
 				stmt.executeUpdate();
+				Statement getMaxResId = con.createStatement();
+				String query = "select max(res_id) from Reservation";
+				ResultSet getMax = getMaxResId.executeQuery(query);
+				while(getMax.next()){
+					res_id = getMax.getString(1);
+				}
+				//res_id = "" + (Integer.parseInt(res_id) + 1);
 			}catch (Exception e) {
 				e.printStackTrace();
 				out.println("Error " + e.getMessage());

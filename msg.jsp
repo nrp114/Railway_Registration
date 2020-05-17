@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" import="cs336LoginPage.*"%>
+<%@ page
+	import="java.io.*,java.util.*,java.sql.*,java.time.format.DateTimeFormatter,java.time.LocalDateTime, java.text.SimpleDateFormat, java.util.Date, java.util.Calendar, java.text.ParseException"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +20,15 @@ body {
 		String username = request.getParameter("username");
 	String password = request.getParameter("password");
 	%>
+	<form method="post" action="alert.jsp">
+		<input type="hidden" id="username" name="username"
+			value="<%=username%>"> <input type="hidden" id="password"
+			name="password" value="<%=password%>"> <input type="hidden"
+			id="opt" name="click" value="<%="Sign In"%>">
+		<button type="submit"
+			style="font-size: 20px; cursor: pointer; background-color: powderblue; margin-left: auto; margin-right: auto; display: block; margin-top: 1%; margin-bottom: 0%">
+			Alert Message</button>
+	</form>
 	<form method="post" action="Cs.jsp">
 		<input type="hidden" id="username" name="username"
 			value="<%=username%>"> <input type="hidden" id="password"
